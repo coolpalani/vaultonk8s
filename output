@@ -1,0 +1,25 @@
+$ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
+2018/12/14 15:54:36 [INFO] generating a new CA key and certificate from CSR
+2018/12/14 15:54:36 [INFO] generate received request
+2018/12/14 15:54:36 [INFO] received CSR
+2018/12/14 15:54:36 [INFO] generating key: rsa-2048
+2018/12/14 15:54:36 [INFO] encoded CSR
+2018/12/14 15:54:36 [INFO] signed certificate with serial number 511492097071802519803975660626190590503603655992
+
+$ cfssl gencert \
+>   -ca=ca.pem \
+>   -ca-key=ca-key.pem \
+>   -config=ca/ca-config.json \
+>   -profile=default \
+>   ca/consul-csr.json | cfssljson -bare consul
+2018/12/14 15:59:25 [INFO] generate received request
+2018/12/14 15:59:25 [INFO] received CSR
+2018/12/14 15:59:25 [INFO] generating key: rsa-2048
+2018/12/14 15:59:25 [INFO] encoded CSR
+2018/12/14 15:59:25 [INFO] signed certificate with serial number 553886745093962098619606480513710645354331080456
+2018/12/14 15:59:25 [WARNING] This certificate lacks a "hosts" field. This makes it unsuitable for
+websites. For more information see the Baseline Requirements for the Issuance and Management
+of Publicly-Trusted Certificates, v.1.1.6, from the CA/Browser Forum (https://cabforum.org);
+specifically, section 10.2.3 ("Information Requirements").
+
+
